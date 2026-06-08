@@ -1,8 +1,5 @@
 # Dockerización del toolkit de Python
 
-> Documento técnico — Fase 8: Paso 5
-> Módulo ASIR · docker-toolkit
-
 ---
 
 ## 1. API FastAPI

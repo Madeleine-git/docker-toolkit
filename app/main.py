@@ -1,6 +1,6 @@
-cat > ~/docker-toolkit/app/main.py << 'ENDOFFILE'
 from fastapi import FastAPI
-from inventory_manager import InventoryManager
+import platform
+import os
 
 app = FastAPI(
     title="SysAdmin Toolkit API",
@@ -19,11 +19,15 @@ def get_status():
 
 @app.get("/inventory")
 def get_inventory():
-    """Endpoint de inventario: devuelve el inventario del sistema."""
-    manager = InventoryManager()
-    inventory = manager.get_inventory()
+    """Endpoint de inventario: devuelve información del sistema."""
     return {
         "status": "ok",
-        "inventory": inventory
+        "inventory": {
+            "hostname": platform.node(),
+            "os": platform.system(),
+            "os_version": platform.release(),
+            "architecture": platform.machine(),
+            "python_version": platform.python_version(),
+            "cpu_count": os.cpu_count()
+        }
     }
-ENDOFFILE
