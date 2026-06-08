@@ -1,0 +1,27 @@
+cat > ~/docker-toolkit/.dockerignore << 'ENDOFFILE'
+# Entorno virtual - tiene miles de ficheros y pesa mucho
+venv/
+.venv/
+
+# Caché de Python - ficheros compilados innecesarios en la imagen
+__pycache__/
+*.pyc
+*.pyo
+
+# Control de versiones - no necesario dentro del contenedor
+.git/
+.gitignore
+
+# Ficheros de entorno con secretos - nunca deben entrar en la imagen
+.env
+
+# Documentación del proyecto - no necesaria en producción
+docs/
+
+# Ficheros de configuración del editor
+.vscode/
+
+# Logs y datos generados - no forman parte del código
+logs/
+data/
+ENDOFFILE
