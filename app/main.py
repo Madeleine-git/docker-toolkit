@@ -3,20 +3,27 @@ import platform
 import os
 from datetime import datetime
 
+REDIS_HOST = os.getenv("REDIS_HOST", "localhost")
+REDIS_PORT = os.getenv("REDIS_PORT", "6379")
+REDIS_PASSWORD = os.getenv("REDIS_PASSWORD", "")
+APP_VERSION = os.getenv("APP_VERSION", "1.0.0")
+
+LOG_FILE = "/data/entradas.log"
+
 app = FastAPI(
     title="SysAdmin Toolkit API",
     description="API REST para el toolkit de administración de sistemas",
-    version="1.0.0"
+    version=APP_VERSION
 )
-
-LOG_FILE = "/data/entradas.log"
 
 @app.get("/status")
 def get_status():
     return {
         "status": "ok",
         "service": "SysAdmin Toolkit API",
-        "version": "1.0.0"
+        "version": APP_VERSION,
+        "redis_host": REDIS_HOST,
+        "redis_port": REDIS_PORT
     }
 
 @app.get("/inventory")

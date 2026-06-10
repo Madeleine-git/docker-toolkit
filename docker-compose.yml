@@ -5,9 +5,10 @@ services:
     ports:
       - "8000:8000"
     environment:
-      - REDIS_HOST=redis
-      - REDIS_PORT=6379
-      - REDIS_PASSWORD=secretpass
+      - REDIS_HOST=${REDIS_HOST}
+      - REDIS_PORT=${REDIS_PORT}
+      - REDIS_PASSWORD=${REDIS_PASSWORD}
+      - APP_VERSION=${APP_VERSION}
     volumes:
       - toolkit-data:/data
     networks:
@@ -18,7 +19,7 @@ services:
   redis:
     image: redis:7-alpine
     container_name: toolkit-redis
-    command: redis-server --requirepass secretpass
+    command: redis-server --requirepass ${REDIS_PASSWORD}
     expose:
       - "6379"
     volumes:
