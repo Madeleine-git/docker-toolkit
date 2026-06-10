@@ -1,0 +1,35 @@
+services:
+  backend:
+    build: .
+    container_name: toolkit-backend
+    ports:
+      - "8000:8000"
+    environment:
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - REDIS_PASSWORD=secretpass
+    volumes:
+      - toolkit-data:/data
+    networks:
+      - toolkit-net
+    depends_on:
+      - redis
+
+  redis:
+    image: redis:7-alpine
+    container_name: toolkit-redis
+    command: redis-server --requirepass secretpass
+    expose:
+      - "6379"
+    volumes:
+      - redis-data:/data
+    networks:
+      - toolkit-net
+
+volumes:
+  toolkit-data:
+  redis-data:
+
+networks:
+  toolkit-net:
+    driver: bridge
