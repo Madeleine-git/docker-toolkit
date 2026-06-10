@@ -1,8 +1,5 @@
 # NGINX: fundamentos teóricos de proxy inverso
 
-> Documento técnico — Fase 8: Paso 11
-> Módulo ASIR · docker-toolkit
-
 ---
 
 ## 1. Proxy directo vs proxy inverso
