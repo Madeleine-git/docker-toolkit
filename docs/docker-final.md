@@ -1,8 +1,5 @@
 # Documentacion tecnica y entregable final
 
-> Documento tecnico - Fase 8: Paso 16
-> Modulo ASIR - docker-toolkit
-
 ---
 
 ## 1. Correccion final: nginx.conf con nombre de servicio
