@@ -86,3 +86,4 @@ def listar_ips():
     r = get_redis()
     ips = r.smembers("ips:sospechosas")
     return {"ips_sospechosas": list(ips)}
+# version 1.1

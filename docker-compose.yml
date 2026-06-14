@@ -1,7 +1,6 @@
 services:
   backend:
     build: .
-    container_name: toolkit-backend
     expose:
       - "8000"
     environment:
